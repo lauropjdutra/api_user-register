@@ -9,7 +9,7 @@ const uuid = require( "uuid")
 
 
 // Sempre tem que vir antes das rotas
-const port = process.env.PORT || 3001 // PORTA 
+const port = 3001 // PORTA 
 const app = express() // EXPRESS
 app.use(express.json()) // JSON
 app.use(cors()) // CORS
@@ -39,9 +39,9 @@ app.get("/users", (request, response) => {
 // POST - CREATE
 app.post("/users", (request, response) => {
   try {
-  const { name, age } = request.body
+  const { name, age, email } = request.body
   if (age < 1) throw new Error("Age must be greater than or equal to 1")
-  const user = {id: uuid.v4(), name, age}
+  const user = {id: uuid.v4(), name, age, email}
   users.push(user)
   return response.status(201).json(user)
   } catch(err) {
@@ -53,9 +53,9 @@ app.post("/users", (request, response) => {
 app.put("/users/:id", checkUserId, (request, response) =>{
   const id = request.userId
   const index = request.userIndex
-  const { name, age } = request.body
+  const { name, age, email } = request.body
   
-  const updatedUser = { id, name, age }
+  const updatedUser = { id, name, age, email }
   
   users[index] = updatedUser
 

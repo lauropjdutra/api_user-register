@@ -1,4 +1,3 @@
-// Sempre importar o express primeiro
 const express = require("express")
 
 // Liberação de acesso para o Front-end
@@ -7,8 +6,6 @@ const cors = require("cors")
 // Biblioteca para gerar um ID aleatório
 const uuid = require( "uuid")
 
-
-// Sempre tem que vir antes das rotas
 const port = 3001 // PORTA 
 const app = express() // EXPRESS
 app.use(express.json()) // JSON
